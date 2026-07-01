@@ -31,7 +31,7 @@
 
 	<li>
 		<a href="#partners">
-			Partners</a>
+			Əməkdaşlıq</a>
 	</li>
 
 	<li>
