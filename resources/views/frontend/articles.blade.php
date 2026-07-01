@@ -1,52 +1,55 @@
+@extends('layouts.frontend')
 
+@section('content')
+
+<div class="page-heading">
+    <h1>Məqalələr</h1>
+</div>
 
 <div id="contents">
 
-    <div class="featured">
+    <div id="articles" class="featured">
 
-        <h2>Məqalələr</h2>
+        <ul>
 
-        <ul class="clearfix">
+            @forelse($articles as $article)
 
-            @foreach($articles as $article)
-
-                <li style="margin-bottom:30px;">
+                <li>
 
                     <h3>
-
                         {{ $article->title }}
-
                     </h3>
 
-                    <p>
-
-                        {{ Str::limit($article->content, 150) }}
-
-                    </p>
-
                     <small>
-
                         {{ $article->created_at->format('d.m.Y') }}
-
                     </small>
 
-                    <br><br>
+                    <p>
+                        {{ Str::limit($article->content, 150) }}
+                    </p>
 
                     <a
                         href="{{ route('frontend.article.show', $article->id) }}"
                         class="more">
 
-                        Ətraflı oxu
+                        Davamını oxu
 
                     </a>
 
                 </li>
 
-            @endforeach
+            @empty
+
+                <p>Hələ ki heç bir məqalə əlavə edilməyib.</p>
+
+            @endforelse
 
         </ul>
+
+        {{ $articles->links('partials.pagination') }}
 
     </div>
 
 </div>
 
+@endsection

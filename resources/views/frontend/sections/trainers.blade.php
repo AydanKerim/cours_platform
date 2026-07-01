@@ -6,15 +6,12 @@
         @foreach($trainers as $trainer)
 
             <li>
-                <div class="frame1">
-                    <div class="box">
-
-                        @if($trainer->photo)
-                            <img src="{{ asset('storage/' . $trainer->photo) }}" alt="{{ $trainer->name }}" width="197"
-                                height="130">
-                        @endif
-
-                    </div>
+                <div class="trainer-thumb">
+                    @if($trainer->photo && Storage::disk('public')->exists($trainer->photo))
+                        <img src="{{ asset('storage/' . $trainer->photo) }}" alt="{{ $trainer->name }}" loading="lazy">
+                    @else
+                        <span class="trainer-thumb-fallback">{{ Str::substr($trainer->name, 0, 1) }}</span>
+                    @endif
                 </div>
 
                 <h3>
@@ -41,6 +38,8 @@
 
     </ul>
 
-</div>
+    <div class="section-see-all">
+        <a href="{{ route('frontend.trainers.index') }}">Bütün təlimçiləri göstər</a>
+    </div>
 
 </div>

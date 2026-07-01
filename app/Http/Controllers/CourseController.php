@@ -176,8 +176,8 @@ class CourseController extends Controller
 
     public  function allCourses()
     {
-        $courses = Course::latest()->get();
+        $courses = Course::latest()->paginate(3);
         return view ('frontend.courses', compact('courses'));
-        
+
     }
 }

@@ -124,7 +124,7 @@ class TrainerController extends Controller
 
     public function allTrainers()
     {
-        $trainers = Trainer::latest()->get();
+        $trainers = Trainer::latest()->paginate(9);
         return view ('frontend.trainers', compact('trainers'));
     }
 

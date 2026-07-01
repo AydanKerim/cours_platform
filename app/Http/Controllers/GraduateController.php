@@ -127,7 +127,7 @@ class GraduateController extends Controller
 
      public function allGraduates()
     {
-        $graduates = Graduate::latest()->get();
+        $graduates = Graduate::latest()->paginate(9);
         return view ('frontend.graduates', compact('graduates'));
     }
 

@@ -1,52 +1,56 @@
+@extends('layouts.frontend')
 
+@section('content')
 
-    <div id="contents">
+<div class="page-heading">
+    <h1>Təlimçilərimiz</h1>
+</div>
 
-        <div class="featured">
-            <h2>Təlimçilərimiz</h2>
+<div id="contents">
 
-            <ul class="clearfix">
+    <div id="trainers" class="featured">
 
-                @foreach($trainers as $trainer)
+        <ul class="clearfix">
 
-                    <li>
-                        <div class="frame1">
-                            <div class="box">
+            @forelse($trainers as $trainer)
 
-                                @if($trainer->photo)
-                                    <img src="{{ asset('storage/' . $trainer->photo) }}" alt="{{ $trainer->name }}" width="197"
-                                        height="130">
-                                @endif
+                <li>
 
-                            </div>
-                        </div>
+                    <div class="trainer-thumb">
+                        @if($trainer->photo && Storage::disk('public')->exists($trainer->photo))
+                            <img src="{{ asset('storage/' . $trainer->photo) }}" alt="{{ $trainer->name }}" loading="lazy">
+                        @else
+                            <span class="trainer-thumb-fallback">{{ Str::substr($trainer->name, 0, 1) }}</span>
+                        @endif
+                    </div>
 
-                        <p>
-                            <b>{{ $trainer->name }}</b>
-                            <br><br>
+                    <h3>
+                        {{ $trainer->name }}
+                    </h3>
 
-                            {{ Str::limit($trainer->position, 60) }}
-                        </p>
+                    <p>
+                        <strong>Vəzifə:</strong>
+                        {{ $trainer->position }}
+                    </p>
 
+                    <a href="{{ route('frontend.trainer.show', $trainer->id) }}" class="more">
+                        Ətraflı
+                    </a>
 
-                        <p>
-                            Vəzifəsi
-                            <strong>Vəzifəsi:</strong>
-                            {{ $trainer->position }}
-                        
-                        </p>
+                </li>
 
-                        <a href="{{ route('frontend.trainer.show', $trainer->id) }}" class="more">
-                            Ətraflı
-                        </a>
+            @empty
 
-                    </li>
+                <p>Hələ ki heç bir təlimçi əlavə edilməyib.</p>
 
-                @endforeach
+            @endforelse
 
-            </ul>
+        </ul>
 
-        </div>
+        {{ $trainers->links('partials.pagination') }}
 
     </div>
 
+</div>
+
+@endsection

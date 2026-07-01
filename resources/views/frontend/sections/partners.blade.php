@@ -1,31 +1,54 @@
-<div id="partners" class="featured">
 
-    <h2>Akademik Partnyorlarımız</h2>
 
-    <ul>
+<div id="contents">
 
-        @foreach($partners as $partner)
+ <div id="partners" class="featured">
 
-            <li>
+        <h2>Akademik Partnyorlarımız</h2>
 
-                @if($partner->logo)
+        <div class="partners-slider">
 
-                    <img
-                        src="{{ asset('storage/'.$partner->logo) }}"
-                        alt="{{ $partner->name }}">
+            <button type="button" class="partners-arrow partners-prev" aria-label="Əvvəlki">&#10094;</button>
 
-                @endif
+            <div class="partners-viewport">
+                <ul class="partners-track">
 
-                <h3>
+                    @foreach($partners as $partner)
 
-                    {{ $partner->name }}
+                        <li class="partners-slide">
 
-                </h3>
+                            <div class="partners-logo">
 
-            </li>
+                                @if($partner->logo && Storage::disk('public')->exists($partner->logo))
 
-        @endforeach
+                                    <img
+                                        src="{{ asset('storage/'.$partner->logo) }}"
+                                        alt="{{ $partner->name }}"
+                                        loading="lazy">
 
-    </ul>
+                                @else
+
+                                    <span class="partners-logo-fallback">{{ $partner->name }}</span>
+
+                                @endif
+
+                            </div>
+
+                            <p>{{ $partner->name }}</p>
+
+                        </li>
+
+                    @endforeach
+
+                </ul>
+            </div>
+
+            <button type="button" class="partners-arrow partners-next" aria-label="Növbəti">&#10095;</button>
+
+        </div>
+
+        <div class="partners-dots"></div>
+
+    </div>
 
 </div>

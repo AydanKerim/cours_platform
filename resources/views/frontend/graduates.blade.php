@@ -1,53 +1,63 @@
+@extends('layouts.frontend')
 
+@section('content')
 
-    <div id="contents">
+<div class="page-heading">
+    <h1>Məzunlarımız</h1>
+</div>
 
-        <div class="featured">
-            <h2>Məzunlarımız</h2>
+<div id="contents">
 
-            <ul class="clearfix">
+    <div id="graduates" class="featured">
 
-                @foreach($graduates as $graduate)
+        <ul>
 
-                    <li>
-                        <div class="frame1">
-                            <div class="box">
+            @forelse($graduates as $graduate)
 
-                                @if($graduate->photo)
-                                    <img src="{{ asset('storage/' . $graduate->photo) }}" alt="{{ $graduate->name }}" width="197"
-                                        height="130">
-                                @endif
+                <li>
 
-                            </div>
-                        </div>
+                    <div class="graduate-thumb">
+                        @if($graduate->photo && Storage::disk('public')->exists($graduate->photo))
+                            <img
+                                src="{{ asset('storage/'.$graduate->photo) }}"
+                                alt="{{ $graduate->name }}"
+                                loading="lazy">
+                        @else
+                            <span class="graduate-thumb-fallback">{{ Str::substr($graduate->name, 0, 1) }}</span>
+                        @endif
+                    </div>
 
-                        <p>
-                            <b>{{ $graduate->name }}</b>
-                            <br><br>
+                    <h3>
+                        {{ $graduate->name }}
+                    </h3>
 
-                            {{ $graduate->position }}
-                        </p>
-<p>
-    <strong>Kurs:</strong>
-    {{ $graduate->course }}
-</p>
+                    <div class="graduate-meta">
+                        <span><strong>Kurs:</strong> {{ $graduate->course }}</span>
+                        <span><strong>Vəzifə:</strong> {{ $graduate->position }}</span>
+                    </div>
 
-                        <p>
-                            <strong>Vəzifəsi:</strong>
-                            {{ $graduate->position }}
-                        </p>
+                    <a
+                        href="{{ route('frontend.graduate.show', $graduate->id) }}"
+                        class="more">
 
-                        <a href="{{ route('frontend.graduate.show', $graduate->id) }}" class="more">
-                            Ətraflı
-                        </a>
+                        Ətraflı
 
-                    </li>
+                    </a>
 
-                @endforeach
+                </li>
 
-            </ul>
+            @empty
 
-        </div>
+                <p>Hələ ki heç bir məzun əlavə edilməyib.</p>
+
+            @endforelse
+
+        </ul>
+
+        {{ $graduates->links('partials.pagination') }}
 
     </div>
 
+</div>
+
+@endsection
