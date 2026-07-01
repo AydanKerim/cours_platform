@@ -201,15 +201,28 @@ input[type='submit']:hover {
 /*------------ HEADER ------------*/
 #header {
 	background: #4e5944 url(../images/bg-header.jpg) repeat-x left bottom;
-	padding: 20px 0 26px;
+	padding: 10px 0;
 
 
 	position: fixed;
-	
+
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 999;
+
+	#header img, #header .logo img { 
+    height: 50px; /* Mövcud ölçüyə görə 45px-55px arası dəyişə bilərsiniz */
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+}
+
+/* Menyu linklərinin arasındakı məsafəni və yazı ölçüsünü bir az yığcamlaşdırırıq */
+#header ul li a {
+    padding: 5px 10px;
+    font-size: 14px; /* Əgər şablonda çox böyükdürsə */
+}
 
 }
 
@@ -1164,85 +1177,62 @@ html {
 ======================= */
 
 #trainers ul{
-
     display:flex;
-
     flex-wrap:wrap;
-
     justify-content:center;
-
     gap:30px;
-
     list-style:none;
-
     padding:0;
-
 }
 
 #trainers li{
-
     width:280px;
-
     background:#fff;
-
     border-radius:12px;
-
     overflow:hidden;
-
     box-shadow:0 5px 15px rgba(0,0,0,.08);
-
     transition:.3s;
-
     text-align:center;
-
-    position:relative;
-
-    min-height:420px;
-
+    
+    /* Absolute təhlükəsini ləğv edib şaquli nizamlamanı məcbur edirik */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    padding-bottom: 20px; /* Altdan düymə üçün boşluq */
+    min-height: 460px; /* Hündürlüyü bir az artırdıq ki, ad, vəzifə və düymə rahat yerləşsin */
 }
 
 #trainers li:hover{
-
     transform:translateY(-8px);
-
     box-shadow:0 10px 30px rgba(0,0,0,.15);
-
 }
 
 #trainers img{
-
-    width:100%;
-
-    height:240px;
-
-    object-fit:cover;
-
+    position: static !important; /* Şəklin adın üzərinə çıxmasının qarşısını tamamilə alır */
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
 }
 
 #trainers h3{
-
-    margin:20px 0 10px;
-
-    font-size:24px;
-
+    position: static !important;
+    margin: 100px 0 5px;
+    font-size: 24px;
+    color: #333; /* Rənginin ağ və ya görünməz olmadığından əmin olmaq üçün */
 }
 
 #trainers p{
-
-    padding:0 20px;
-
+    position: static !important;
+    padding: 0 20px;
+    margin: 5px 0;
 }
 
+/* Düyməni sərbəst buraxırıq ki, digər elementləri sıxışdırmasın */
 #trainers .more{
-
-    position:absolute;
-
-    bottom:20px;
-
-    left:20px;
-
-    right:20px;
-
+    position: static !important; /* Absolute sistemindən tamamilə çıxarırıq */
+    margin: auto 20px 0 20px; /* Mətnlərdən sonra gəlib avtomatik kartın ən aşağısında bərabərləşir */
 }
 
 /* ===========================
@@ -1250,85 +1240,58 @@ html {
 =========================== */
 
 #graduates ul{
-
     display:flex;
-
     flex-wrap:wrap;
-
     justify-content:center;
-
     gap:30px;
-
     list-style:none;
-
     padding:0;
-
 }
 
 #graduates li{
-
     width:280px;
-
     background:#fff;
-
     border-radius:12px;
-
     overflow:hidden;
-
     box-shadow:0 5px 15px rgba(0,0,0,.08);
-
     transition:.3s;
-
     text-align:center;
-
-    position:relative;
-
-    min-height:440px;
-
+    
+    /* Absolute mövqeyini ləğv edib Flexbox veririk */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    
+    padding-bottom: 20px; /* Altdan səliqəli məsafə qalsın */
+    min-height: 480px; /* Kartların hamısı eyni hündürlükdə qalsın deyə bir az artırdıq */
 }
 
 #graduates li:hover{
-
     transform:translateY(-8px);
-
     box-shadow:0 10px 30px rgba(0,0,0,.15);
-
 }
 
 #graduates img{
-
     width:100%;
-
     height:240px;
-
     object-fit:cover;
-
 }
 
 #graduates h3{
-
     margin:20px 0 10px;
-
     font-size:24px;
-
 }
 
+/* Yazıların (Kurs və Vəzifə) bir-birinə çox sıxışmaması üçün */
 #graduates p{
-
     padding:0 20px;
-
+    margin: 5px 0; 
 }
 
+/* Əsas dəyişiklik: Düyməni sərbəst buraxırıq */
 #graduates .more{
-
-    position:absolute;
-
-    bottom:20px;
-
-    left:20px;
-
-    right:20px;
-
+    position: static; /* Absolute sistemindən çıxardırıq */
+    margin: auto 20px 0 20px; /* Mətn qısa olsa belə düyməni avtomatik ən aşağıya itələyir */
 }
 
 /* ===========================
