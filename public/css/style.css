@@ -201,16 +201,27 @@ input[type='submit']:hover {
 /*------------ HEADER ------------*/
 #header {
 	background: #4e5944 url(../images/bg-header.jpg) repeat-x left bottom;
-	padding: 20px 0 26px;
-
+	padding: 10px 0;
 
 	position: fixed;
-	
+
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 999;
+}
 
+#header img,
+#header .logo img {
+	height: 50px;
+	width: auto;
+	object-fit: contain;
+	display: inline-block;
+}
+
+#header ul li a {
+	padding: 5px 10px;
+	font-size: 14px;
 }
 
 /** logo **/
@@ -1265,53 +1276,31 @@ html {
 ======================= */
 
 #trainers ul{
-
     display:flex;
-
     flex-wrap:wrap;
-
     justify-content:center;
-
     gap:30px;
-
     list-style:none;
-
     padding:0;
-
 }
 
 #trainers li{
-
     width:280px;
-
     background:#fff;
-
     border-radius:12px;
-
     overflow:hidden;
-
     box-shadow:0 5px 15px rgba(0,0,0,.08);
-
     transition:.3s;
-
     text-align:center;
-
     position:relative;
-
     min-height:0;
-
     display:flex;
-
     flex-direction:column;
-
 }
 
 #trainers li:hover{
-
     transform:translateY(-8px);
-
     box-shadow:0 10px 30px rgba(0,0,0,.15);
-
 }
 
 #trainers .trainer-thumb{
@@ -1357,11 +1346,8 @@ html {
 }
 
 #trainers h3{
-
     margin:20px 0 10px;
-
     font-size:24px;
-
 }
 
 #trainers p{
@@ -1387,53 +1373,31 @@ html {
 =========================== */
 
 #graduates ul{
-
     display:flex;
-
     flex-wrap:wrap;
-
     justify-content:center;
-
     gap:30px;
-
     list-style:none;
-
     padding:0;
-
 }
 
 #graduates li{
-
     width:280px;
-
     background:#fff;
-
     border-radius:12px;
-
     overflow:hidden;
-
     box-shadow:0 5px 15px rgba(0,0,0,.08);
-
     transition:.3s;
-
     text-align:center;
-
     position:relative;
-
     min-height:0;
-
     display:flex;
-
     flex-direction:column;
-
 }
 
 #graduates li:hover{
-
     transform:translateY(-8px);
-
     box-shadow:0 10px 30px rgba(0,0,0,.15);
-
 }
 
 #graduates .graduate-thumb{
@@ -1447,11 +1411,8 @@ html {
 }
 
 #graduates img{
-
     width:100%;
-
     height:240px;
-
     object-fit:cover;
 
     display:block;
@@ -1479,11 +1440,8 @@ html {
 }
 
 #graduates h3{
-
     margin:20px 0 10px;
-
     font-size:24px;
-
 }
 
 #graduates .graduate-meta{
