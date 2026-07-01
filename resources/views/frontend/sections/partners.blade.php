@@ -1,47 +1,31 @@
+<div id="partners" class="featured">
 
+    <h2>Akademik Partnyorlarımız</h2>
 
-<div id="contents">
+    <ul>
 
- <div id="partners" class="featured">
+        @foreach($partners as $partner)
 
-        <h2>Akademik Partnyorlarımız</h2>
+            <li>
 
-        <ul class="clearfix">
+                @if($partner->logo)
 
-            @foreach($partners as $partner)
+                    <img
+                        src="{{ asset('storage/'.$partner->logo) }}"
+                        alt="{{ $partner->name }}">
 
-                <li>
+                @endif
 
-                    <div class="frame1">
+                <h3>
 
-                        <div class="box">
+                    {{ $partner->name }}
 
-                            @if($partner->logo)
+                </h3>
 
-                                <img
-                                    src="{{ asset('storage/'.$partner->logo) }}"
-                                    alt="{{ $partner->name }}"
-                                    width="180">
+            </li>
 
-                            @endif
+        @endforeach
 
-                        </div>
-
-                    </div>
-
-                    <p>
-
-                        <b>{{ $partner->name }}</b>
-
-                    </p>
-
-                </li>
-
-            @endforeach
-
-        </ul>
-
-    </div>
+    </ul>
 
 </div>
-
