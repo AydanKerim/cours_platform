@@ -220,10 +220,8 @@ input[type='submit']:hover {
 
 /* Menyu linklərinin arasındakı məsafəni və yazı ölçüsünü bir az yığcamlaşdırırıq */
 #header ul li a {
-    padding: 5px 10px;
-    font-size: 14px; /* Əgər şablonda çox böyükdürsə */
-}
-
+	padding: 5px 6px;
+	font-size: 13px;
 }
 
 /** logo **/
@@ -1126,6 +1124,45 @@ p a:hover {
 
 	box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
 
+}
+
+#header .clearfix {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	gap: 20px;
+	width: 100%;
+	max-width: 1200px;
+	box-sizing: border-box;
+	padding: 0 20px;
+}
+
+#header .logo {
+	float: none;
+	margin-top: 0;
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+#header .logo img {
+	border-radius: 6px;
+}
+
+#header .navigation {
+	float: none;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-end;
+	margin: 0;
+	gap: 10px;
+}
+
+#header .navigation li {
+	float: none;
+	margin-left: 0;
 }
 
 html {
