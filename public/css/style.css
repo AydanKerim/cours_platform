@@ -220,8 +220,8 @@ input[type='submit']:hover {
 }
 
 #header ul li a {
-	padding: 5px 10px;
-	font-size: 14px;
+	padding: 5px 6px;
+	font-size: 13px;
 }
 
 /** logo **/
@@ -1177,7 +1177,8 @@ p a:hover {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
+	gap: 20px;
 	width: 100%;
 	max-width: 1200px;
 	box-sizing: border-box;
@@ -1187,6 +1188,13 @@ p a:hover {
 #header .logo {
 	float: none;
 	margin-top: 0;
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+#header .logo img {
+	border-radius: 6px;
 }
 
 #header .navigation {
@@ -1194,8 +1202,9 @@ p a:hover {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+	justify-content: flex-end;
 	margin: 0;
-	gap: 20px;
+	gap: 10px;
 }
 
 #header .navigation li {
