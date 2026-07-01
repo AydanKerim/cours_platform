@@ -2,26 +2,22 @@
 
 @section('content')
 
-<div id="contents">
+<div class="page-heading">
+    <h1>{{ $faq->question }}</h1>
+</div>
 
-    <h2>{{ $faq->question }}</h2>
+<div class="detail-page">
+    <div class="detail-card">
 
-    <br>
+        <p>
+            {{ $faq->answer }}
+        </p>
 
-    <p>
+        <a href="{{ route('frontend.faqs.index') }}" class="detail-back">
+            ← Bütün suallar
+        </a>
 
-        {{ $faq->answer }}
-
-    </p>
-
-    <br>
-
-    <a href="{{ route('frontend.faqs.index') }}">
-
-        Bütün suallar
-
-    </a>
-
+    </div>
 </div>
 
 @endsection

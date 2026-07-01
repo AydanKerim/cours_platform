@@ -2,45 +2,26 @@
 
 @section('content')
 
-<div id="contents">
+<div class="page-heading">
+    <h1>{{ $article->title }}</h1>
+</div>
 
-    <div class="featured">
+<div class="detail-page">
+    <div class="detail-card">
 
-        <h1>
-
-            {{ $article->title }}
-
-        </h1>
-
-        <p style="color:gray;">
-
+        <p class="detail-date">
             {{ $article->created_at->format('d.m.Y') }}
-
         </p>
 
-        <hr>
-
-        <div
-            style="line-height:32px;
-                   font-size:17px;
-                   white-space:pre-line;">
-
+        <p class="detail-body">
             {{ $article->content }}
+        </p>
 
-        </div>
-
-        <br>
-
-        <a
-            href="{{ route('frontend.articles.index') }}"
-            class="more">
-
+        <a href="{{ route('frontend.articles.index') }}" class="detail-back">
             ← Bütün məqalələr
-
         </a>
 
     </div>
-
 </div>
 
 @endsection

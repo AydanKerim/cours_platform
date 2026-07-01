@@ -40,4 +40,8 @@
 
     </ul>
 
+    <div class="section-see-all">
+        <a href="{{ route('frontend.articles.index') }}">Bütün məqalələri göstər</a>
+    </div>
+
 </div>

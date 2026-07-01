@@ -2,95 +2,97 @@
 
     <h2>Əlaqə</h2>
 
-    <h3>{{ $contact->title }}</h3>
+    <div class="contact-top">
 
-    <p>
-        <strong>📍 Ünvan:</strong>
-        {{ $contact->address }}
-    </p>
+        <div class="contact-info">
 
-    <p>
-        <strong>☎ Telefon:</strong>
-        {{ $contact->phone }}
-    </p>
+            <h3>{{ $contact->title }}</h3>
 
-    <p>
-        <strong>✉ Email:</strong>
-        {{ $contact->email }}
-    </p>
+            <ul class="contact-details">
 
-    <p>
-        <strong>🕒 İş saatları:</strong>
-        {{ $contact->working_hours }}
-    </p>
+                <li>
+                    <span class="contact-icon">📍</span>
+                    <span><strong>Ünvan:</strong> {{ $contact->address }}</span>
+                </li>
 
-    <br>
+                <li>
+                    <span class="contact-icon">☎</span>
+                    <span><strong>Telefon:</strong> {{ $contact->phone }}</span>
+                </li>
 
-    <div>
+                <li>
+                    <span class="contact-icon">✉</span>
+                    <span><strong>Email:</strong> {{ $contact->email }}</span>
+                </li>
 
-        {!! $contact->map !!}
+                <li>
+                    <span class="contact-icon">🕒</span>
+                    <span><strong>İş saatları:</strong> {{ $contact->working_hours }}</span>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <div class="contact-map">
+
+            {!! $contact->map !!}
+
+        </div>
 
     </div>
 
     <hr>
 
-    <h2>Bizə Yazın</h2>
+    <div class="contact-form-wrap">
 
-    @if(session('success'))
+        <h2>Bizə Yazın</h2>
 
-        <div class="alert alert-success">
+        @if(session('success'))
 
-            {{ session('success') }}
+            <div class="alert alert-success">
 
-        </div>
+                {{ session('success') }}
 
-    @endif
+            </div>
 
-    <form action="{{ route('frontend.contact.message.store') }}" method="POST">
+        @endif
 
-        @csrf
+        <form action="{{ route('frontend.contact.message.store') }}" method="POST" class="contact-form">
 
-        <p>
+            @csrf
 
-            <input
-                type="text"
-                name="name"
-                placeholder="Ad Soyad"
-                required>
+            <div class="form-row">
 
-        </p>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Ad Soyad"
+                    required>
 
-        <p>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required>
 
-            <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                required>
+            </div>
 
-        </p>
+            <div class="form-row">
 
-        <p>
+                <input
+                    type="text"
+                    name="phone"
+                    placeholder="Telefon"
+                    required>
 
-            <input
-                type="text"
-                name="phone"
-                placeholder="Telefon"
-                required>
+                <input
+                    type="text"
+                    name="subject"
+                    placeholder="Mövzu"
+                    required>
 
-        </p>
-
-        <p>
-
-            <input
-                type="text"
-                name="subject"
-                placeholder="Mövzu"
-                required>
-
-        </p>
-
-        <p>
+            </div>
 
             <textarea
                 name="message"
@@ -98,14 +100,14 @@
                 placeholder="Mesajınız..."
                 required></textarea>
 
-        </p>
+            <button type="submit" class="contact-submit">
 
-        <button type="submit" class="more">
+                Göndər
 
-            Göndər
+            </button>
 
-        </button>
+        </form>
 
-    </form>
+    </div>
 
 </div>

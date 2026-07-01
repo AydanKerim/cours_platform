@@ -6,42 +6,49 @@
 
         <h2>Akademik Partnyorlarımız</h2>
 
-        <ul class="clearfix">
+        <div class="partners-slider">
 
-            @foreach($partners as $partner)
+            <button type="button" class="partners-arrow partners-prev" aria-label="Əvvəlki">&#10094;</button>
 
-                <li>
+            <div class="partners-viewport">
+                <ul class="partners-track">
 
-                    <div class="frame1">
+                    @foreach($partners as $partner)
 
-                        <div class="box">
+                        <li class="partners-slide">
 
-                            @if($partner->logo)
+                            <div class="partners-logo">
 
-                                <img
-                                    src="{{ asset('storage/'.$partner->logo) }}"
-                                    alt="{{ $partner->name }}"
-                                    width="180">
+                                @if($partner->logo && Storage::disk('public')->exists($partner->logo))
 
-                            @endif
+                                    <img
+                                        src="{{ asset('storage/'.$partner->logo) }}"
+                                        alt="{{ $partner->name }}"
+                                        loading="lazy">
 
-                        </div>
+                                @else
 
-                    </div>
+                                    <span class="partners-logo-fallback">{{ $partner->name }}</span>
 
-                    <p>
+                                @endif
 
-                        <b>{{ $partner->name }}</b>
+                            </div>
 
-                    </p>
+                            <p>{{ $partner->name }}</p>
 
-                </li>
+                        </li>
 
-            @endforeach
+                    @endforeach
 
-        </ul>
+                </ul>
+            </div>
+
+            <button type="button" class="partners-arrow partners-next" aria-label="Növbəti">&#10095;</button>
+
+        </div>
+
+        <div class="partners-dots"></div>
 
     </div>
 
 </div>
-

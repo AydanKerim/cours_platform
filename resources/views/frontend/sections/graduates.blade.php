@@ -8,13 +8,16 @@
 
             <li>
 
-                @if($graduate->photo)
-
-                    <img
-                        src="{{ asset('storage/'.$graduate->photo) }}"
-                        alt="{{ $graduate->name }}">
-
-                @endif
+                <div class="graduate-thumb">
+                    @if($graduate->photo && Storage::disk('public')->exists($graduate->photo))
+                        <img
+                            src="{{ asset('storage/'.$graduate->photo) }}"
+                            alt="{{ $graduate->name }}"
+                            loading="lazy">
+                    @else
+                        <span class="graduate-thumb-fallback">{{ Str::substr($graduate->name, 0, 1) }}</span>
+                    @endif
+                </div>
 
                 <h3>
 
@@ -22,21 +25,10 @@
 
                 </h3>
 
-                <p>
-
-                    <strong>Kurs:</strong>
-
-                    {{ $graduate->course }}
-
-                </p>
-
-                <p>
-
-                    <strong>Vəzifə:</strong>
-
-                    {{ $graduate->position }}
-
-                </p>
+                <div class="graduate-meta">
+                    <span><strong>Kurs:</strong> {{ $graduate->course }}</span>
+                    <span><strong>Vəzifə:</strong> {{ $graduate->position }}</span>
+                </div>
 
                 <a
                     href="{{ route('frontend.graduate.show',$graduate->id) }}"
@@ -51,5 +43,9 @@
         @endforeach
 
     </ul>
+
+    <div class="section-see-all">
+        <a href="{{ route('frontend.graduates.index') }}">Bütün məzunları göstər</a>
+    </div>
 
 </div>

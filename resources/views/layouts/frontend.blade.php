@@ -14,6 +14,7 @@
 
 	@include('partials.footer')
 
+	<script src="{{ asset('js/partners-slider.js') }}" defer></script>
 
 </body>
 

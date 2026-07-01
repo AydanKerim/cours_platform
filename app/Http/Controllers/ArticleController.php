@@ -95,7 +95,7 @@ class ArticleController extends Controller
 
     public function allArticles()
 {
-    $articles = Article::latest()->get();
+    $articles = Article::latest()->paginate(6);
 
     return view(
         'frontend.articles',

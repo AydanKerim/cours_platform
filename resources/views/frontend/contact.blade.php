@@ -1,173 +1,73 @@
+@extends('layouts.frontend')
 
+@section('content')
+
+<div class="page-heading">
+    <h1>Əlaqə</h1>
+</div>
 
 <div id="contents">
 
-    <div class="featured">
+    <div id="contact" class="featured">
 
-        <h2>Əlaqə</h2>
+        @forelse($contacts as $contact)
 
-        @foreach($contacts as $contact)
+            <div class="contact-top">
 
-            <h3>{{ $contact->title }}</h3>
+                <div class="contact-info">
 
-            <br>
+                    <h3>{{ $contact->title }}</h3>
 
-            <p>
+                    <ul class="contact-details">
 
-                <strong>📍 Ünvan:</strong>
+                        <li>
+                            <span class="contact-icon">📍</span>
+                            <span><strong>Ünvan:</strong> {{ $contact->address }}</span>
+                        </li>
 
-                {{ $contact->address }}
+                        <li>
+                            <span class="contact-icon">☎</span>
+                            <span><strong>Telefon:</strong> {{ $contact->phone }}</span>
+                        </li>
 
-            </p>
+                        <li>
+                            <span class="contact-icon">✉</span>
+                            <span><strong>Email:</strong> {{ $contact->email }}</span>
+                        </li>
 
-            <p>
+                        <li>
+                            <span class="contact-icon">🕒</span>
+                            <span><strong>İş saatları:</strong> {{ $contact->working_hours }}</span>
+                        </li>
 
-                <strong>☎ Telefon:</strong>
+                    </ul>
 
-                {{ $contact->phone }}
+                    <a
+                        href="{{ route('frontend.contact.show', $contact->id) }}"
+                        class="faq-link">
 
-            </p>
+                        Ətraflı
 
-            <p>
+                    </a>
 
-                <strong>✉ Email:</strong>
+                </div>
 
-                {{ $contact->email }}
+                <div class="contact-map">
 
-            </p>
+                    {!! $contact->map !!}
 
-            <p>
-
-                <strong>🕒 İş saatları:</strong>
-
-                {{ $contact->working_hours }}
-
-            </p>
-
-            <br>
-
-            <h3>Xəritə</h3>
-
-            <div>
-
-                {!! $contact->map !!}
+                </div>
 
             </div>
 
-            <hr>
+        @empty
 
-<h2>Bizə Yazın</h2>
+            <p>Hələ ki heç bir əlaqə məlumatı əlavə edilməyib.</p>
 
-@if(session('success'))
-
-    <div style="color:green;margin-bottom:20px;">
-
-        {{ session('success') }}
-
-    </div>
-
-@endif
-
-<form
-    action="{{ route('frontend.contact.message.store') }}"
-    method="POST">
-
-    @csrf
-
-    <p>
-
-        <label>Ad Soyad</label>
-
-        <br>
-
-        <input
-            type="text"
-            name="name"
-            style="width:400px;padding:8px;"
-            required>
-
-    </p>
-
-    <p>
-
-        <label>Email</label>
-
-        <br>
-
-        <input
-            type="email"
-            name="email"
-            style="width:400px;padding:8px;"
-            required>
-
-    </p>
-
-    <p>
-
-        <label>Telefon</label>
-
-        <br>
-
-        <input
-            type="text"
-            name="phone"
-            style="width:400px;padding:8px;"
-            required>
-
-    </p>
-
-    <p>
-
-        <label>Mövzu</label>
-
-        <br>
-
-        <input
-            type="text"
-            name="subject"
-            style="width:400px;padding:8px;"
-            required>
-
-    </p>
-
-    <p>
-
-        <label>Mesaj</label>
-
-        <br>
-
-        <textarea
-            name="message"
-            rows="6"
-            style="width:400px;padding:8px;"
-            required></textarea>
-
-    </p>
-
-    <button
-        type="submit"
-        class="more">
-
-        Göndər
-
-    </button>
-
-</form>
-            <br><br>
-
-            <a
-                href="{{ route('frontend.contact.show',$contact->id) }}"
-                class="more">
-
-                Ətraflı
-
-            </a>
-
-            <hr>
-
-        @endforeach
+        @endforelse
 
     </div>
 
 </div>
 
+@endsection

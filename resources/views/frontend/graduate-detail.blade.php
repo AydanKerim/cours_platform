@@ -2,40 +2,47 @@
 
 @section('content')
 
-<div id="contents">
-
+<div class="page-heading">
     <h1>{{ $graduate->name }}</h1>
+</div>
 
-    <br>
+<div class="detail-page">
+    <div class="detail-card">
 
-    @if($graduate->photo)
+        <div class="profile-header">
 
-        <img
-            src="{{ asset('storage/'.$graduate->photo) }}"
-            alt="{{ $graduate->name }}"
-            width="300">
+            @if($graduate->photo && Storage::disk('public')->exists($graduate->photo))
+                <img
+                    src="{{ asset('storage/'.$graduate->photo) }}"
+                    alt="{{ $graduate->name }}"
+                    class="profile-photo">
+            @else
+                <span class="profile-photo-fallback">{{ Str::substr($graduate->name, 0, 1) }}</span>
+            @endif
 
-    @endif
+            <span class="profile-badge">{{ $graduate->position }}</span>
 
-    <br><br>
+        </div>
 
-    <p>
-        <strong>Vəzifəsi:</strong>
-        {{ $graduate->position }}
-    </p>
+        <div class="profile-meta">
 
-    <br>
+            <div>
+                <strong>Kurs</strong>
+                {{ $graduate->course }}
+            </div>
 
-   <p>
-    <strong>Kurs:</strong>
-    {{ $graduate->course }}
-</p>
+            <div>
+                <strong>Şirkət</strong>
+                {{ $graduate->company }}
+            </div>
 
-<p>
-    <strong>Şirkət:</strong>
-    {{ $graduate->company }}
-</p>
+        </div>
 
+        <a href="{{ route('frontend.graduates.index') }}" class="detail-back">
+            ← Bütün məzunlar
+        </a>
+
+    </div>
 </div>
 
 @endsection

@@ -12,56 +12,47 @@
 
             <li>
 
-                <div class="frame1">
-                    <div class="box">
-
-                        @if($course->photo)
-                            <img
-                                src="{{ asset('storage/'.$course->photo) }}"
-                                alt="{{ $course->title }}"
-                                width="197"
-                                height="130"
-                                style="object-fit:cover;">
-                        @endif
-
-                    </div>
+                <div class="course-thumb">
+                    @if($course->photo && Storage::disk('public')->exists($course->photo))
+                        <img
+                            src="{{ asset('storage/'.$course->photo) }}"
+                            alt="{{ $course->title }}"
+                            loading="lazy">
+                    @else
+                        <span class="course-thumb-fallback">{{ Str::substr($course->title, 0, 1) }}</span>
+                    @endif
                 </div>
 
-                <h3 style="height:60px;">
+                <div class="course-body">
 
-                    {{ $course->title }}
+                    <h3>
+                        {{ $course->title }}
+                    </h3>
 
-                </h3>
+                    <div class="course-meta">
+                        <span><strong>Müddət:</strong> {{ $course->duration }}</span>
+                        <span><strong>Dərs sayı:</strong> {{ $course->lessons->count() }}</span>
+                    </div>
 
-                <p>
+                    <a
+                        href="{{ route('frontend.course.show', $course->id) }}"
+                        class="more">
 
-                    <strong>Müddət:</strong>
+                        Ətraflı
 
-                    {{ $course->duration }}
+                    </a>
 
-                </p>
-
-                <p>
-
-                    <strong>Dərs sayı:</strong>
-
-                    {{ $course->lessons->count() }}
-
-                </p>
-
-                <a
-                    href="{{ route('frontend.course.show', $course->id) }}"
-                    class="more">
-
-                    Ətraflı
-
-                </a>
+                </div>
 
             </li>
 
         @endforeach
 
     </ul>
+
+    <div class="section-see-all">
+        <a href="{{ route('frontend.courses.index') }}">Bütün kursları göstər</a>
+    </div>
 
 </div>
 

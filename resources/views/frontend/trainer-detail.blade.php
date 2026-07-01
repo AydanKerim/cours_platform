@@ -2,34 +2,37 @@
 
 @section('content')
 
-<div id="contents">
-
+<div class="page-heading">
     <h1>{{ $trainer->name }}</h1>
+</div>
 
-    <br>
+<div class="detail-page">
+    <div class="detail-card">
 
-    @if($trainer->photo)
+        <div class="profile-header">
 
-        <img
-            src="{{ asset('storage/'.$trainer->photo) }}"
-            alt="{{ $trainer->name }}"
-            width="300">
+            @if($trainer->photo && Storage::disk('public')->exists($trainer->photo))
+                <img
+                    src="{{ asset('storage/'.$trainer->photo) }}"
+                    alt="{{ $trainer->name }}"
+                    class="profile-photo">
+            @else
+                <span class="profile-photo-fallback">{{ Str::substr($trainer->name, 0, 1) }}</span>
+            @endif
 
-    @endif
+            <span class="profile-badge">{{ $trainer->position }}</span>
 
-    <br><br>
+        </div>
 
-    <p>
-        <strong>Vəzifəsi:</strong>
-        {{ $trainer->position }}
-    </p>
+        <p class="profile-bio">
+            {{ $trainer->bio }}
+        </p>
 
-    <br>
+        <a href="{{ route('frontend.trainers.index') }}" class="detail-back">
+            ← Bütün təlimçilər
+        </a>
 
-    <p>
-        {{ $trainer->bio }}
-    </p>
-
+    </div>
 </div>
 
 @endsection

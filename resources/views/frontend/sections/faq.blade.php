@@ -6,27 +6,32 @@
 
         <h2>Tez-tez verilən suallar</h2>
 
-        @foreach($faqs as $faq)
+        <div class="faq-list">
 
-            <div style="margin-bottom:30px;">
+            @foreach($faqs as $faq)
 
-                <h3>{{ $faq->question }}</h3>
+                <div class="faq-item">
 
-                <p>
-                    {{ $faq->answer }}
-                </p>
+                    <h3>{{ $faq->question }}</h3>
 
-                <a href="{{ route('frontend.faq.show', $faq->id) }}">
-                    Ətraflı
-                </a>
+                    <p>
+                        {{ $faq->answer }}
+                    </p>
 
-            </div>
+                    <a href="{{ route('frontend.faq.show', $faq->id) }}" class="faq-link">
+                        Ətraflı
+                    </a>
 
-            <hr>
+                </div>
 
-        @endforeach
+            @endforeach
+
+        </div>
+
+        <div class="section-see-all">
+            <a href="{{ route('frontend.faqs.index') }}">Bütün sualları göstər</a>
+        </div>
 
     </div>
 
 </div>
-
