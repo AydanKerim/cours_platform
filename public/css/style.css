@@ -930,54 +930,78 @@ p a:hover {
 	clear: both;
 }
 
-.partners {
+/*=============================
+        PARTNERS
+=============================*/
 
-	display: flex;
+#partners{
 
-	flex-wrap: wrap;
-
-	gap: 30px;
-
-	justify-content: center;
-
-	margin-top: 40px;
+    padding:70px 0;
 
 }
 
-.partner-item {
+#partners ul{
 
-	width: 180px;
+    display:flex;
 
-	text-align: center;
+    flex-wrap:wrap;
 
-	background: white;
+    justify-content:center;
 
-	padding: 20px;
+    gap:40px;
 
-	border-radius: 10px;
+    list-style:none;
 
-	box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
-
-}
-
-.partner-item img {
-
-	width: 120px;
-
-	height: 120px;
-
-	object-fit: contain;
-
-	margin-bottom: 15px;
+    padding:0;
 
 }
 
-.partner-item h4 {
+#partners li{
 
-	font-size: 16px;
+    width:180px;
+	height: 50px;
+
+    text-align:center;
 
 }
 
+#partners img{
+
+    width:160px;
+
+    height:150px;
+
+    object-fit:contain;
+
+    background:#fff;
+
+    border:1px solid #eee;
+
+    border-radius:10px;
+
+    padding:15px;
+
+    transition:.3s;
+
+}
+
+#partners img:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+}
+
+#partners h3{
+
+    margin-top:5px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
 
 
 .about-item {
