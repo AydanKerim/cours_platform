@@ -1,0 +1,24 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\Contact; // Modeli daxil edirik
+
+class ContactSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        Contact::create([
+            'title'         => 'Bizimlə Əlaqə',
+            'address'       => 'Bakı şəhəri, Nizami küçəsi 142',
+            'phone'         => '+994 (55) 123-4567',
+            'email'         => 'info@aydan.edu.az',
+            'working_hours' => 'Bazar ertəsi - Şənbə, 09:00 - 18:00',
+            'map'           => '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.387291168128!2d49.8436577!3d40.3781234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDIyJzQxLjIiTiA0OcKwNTAnMzcuMiJF!5e0!3m2!1saz!2saz!4v1625000000000!5m2!1saz!2saz" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>',
+        ]);
+    }
+}
