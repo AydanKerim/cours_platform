@@ -12,6 +12,8 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactMessageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 // HOME
 Route::get('/', [CourseController::class, 'home']);
@@ -24,11 +26,12 @@ Route::middleware('auth')->group(function () {
 });
 
 // ADMIN
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')
+->middleware('auth')
+->name('admin.')
+->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('backend.dashboard');
-    })->name('dashboard');
+   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('courses', CourseController::class);
 
