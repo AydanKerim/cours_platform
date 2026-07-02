@@ -10,41 +10,41 @@
 
         <ul class="navigation">
 	<li>
-		<a href="#courses">
+		<a href="{{ route('frontend.courses.index') }}">
 			Kurslar
 		</a>
 	</li>
 	<li>
-		<a href="#trainers">
+		<a href="{{ route('frontend.trainers.index') }}">
 			Təlimçilər
 		</a>
 	</li>
 	<li>
-	<a href="#graduates">
+	<a href="{{ route('frontend.graduates.index') }}">
 			Məzunlar</a>
 	</li>
 	<li>
-		<a href="#about">
+		<a href="{{ route('frontend.abouts.index') }}">
 			Haqqımızda</a>
 	</li>
 
 
 	<li>
-		<a href="#partners">
+		<a href="{{ route('frontend.partners.index') }}">
 			Əməkdaşlıq</a>
 	</li>
 
 	<li>
-		<a href="#faq">
+		<a href="{{ route('frontend.partners.index') }}">
 			Tez-tez verilən suallar</a>
 	</li>
 	
 	<li>
-		<a href="#articles">
+		<a href="{{ route('frontend.articles.index') }}">
 			Məqalələr</a>
 	</li>
 	<li>
-		<a href="#contact">
+		<a href="{{ route('frontend.contacts.index') }}">
 			Əlaqə</a>
 	</li>
 </ul>
