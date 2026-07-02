@@ -1167,7 +1167,7 @@ p a:hover {
 
 	width: 100%;
 
-	background: #ffffff;
+	background: #13445c;
 
 	box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
 
@@ -1223,60 +1223,67 @@ html {
 =========================== */
 
 .hero{
+    height:100vh;
 
-    height:550px;
+    background:
+        linear-gradient(rgba(10,20,35,.65),rgba(10,20,35,.65)),
+        url("../images/bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
-    background:#1f2937;
-
-    color:#fff;
-
     text-align:center;
-
 }
 
 .hero h1{
 
-    font-size:60px;
+    font-size:70px;
 
-    margin-bottom:20px;
+    color:#fff;
+
+    letter-spacing:2px;
+
+    font-weight:700;
 
 }
 
 .hero p{
 
-    font-size:22px;
+    color:#f2f2f2;
 
-    margin-bottom:35px;
+    font-size:24px;
+
+    margin-top:15px;
 
 }
 
 .hero-btn{
 
-    display:inline-block;
+ display:inline-block;
 
-    padding:14px 35px;
+    margin-top:35px;
 
-    background:#4CAF50;
+    padding:15px 40px;
+
+    background:#3CB043;
 
     color:#fff;
 
-    text-decoration:none;
-
     border-radius:8px;
 
-    font-size:18px;
+    text-decoration:none;
+
+    transition:.3s;
 
 }
 
 .hero-btn:hover{
 
-    background:#2e7d32;
+    background:#2c8d35;
 
 }
 
@@ -2243,4 +2250,76 @@ html {
 	line-height: 1.8;
 	color: #555;
 	font-size: 16px;
+}
+
+/* ==========================
+        DASHBOARD
+========================== */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.dashboard-card {
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+}
+
+/* Kartların sol tərəfindəki mətn strukturu */
+.card-info h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Kartların sağ tərəfindəki böyük rəqəm */
+.card-info span {
+    font-size: 44px;
+    font-weight: 800;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Hər kart üçün unikal müasir qradiyent rənglər */
+.card-courses {
+    background: linear-gradient(135deg, #4ef0a0 0%, #17b978 100%);
+}
+
+.card-trainers {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.card-graduates {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.card-partners {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+.card-articles {
+    background: linear-gradient(135deg, #b1f970 0%, #68b022 100%);
+}
+
+.card-faq {
+    background: linear-gradient(135deg, #ab7fff 0%, #743cd3 100%);
 }
