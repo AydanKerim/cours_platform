@@ -1,4 +1,6 @@
+@extends('layouts.frontend')
 
+@section('content')
 
     <div id="contents">
 
@@ -103,3 +105,4 @@ document.querySelectorAll('.faq-question').forEach(button => {
 
 </script>
 
+@endsection

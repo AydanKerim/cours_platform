@@ -1,69 +1,78 @@
+@extends('layouts.frontend')
 
+@section('content')
 
-    <div id="contents">
+<div id="contents">
 
-       <div class="featured">
+    <div class="featured">
 
-    <h2>Kurslarımız</h2>
+        <h2>Kurslarımız</h2>
 
-    <ul class="clearfix">
+        <ul class="clearfix">
 
-        @foreach($courses as $course)
+            @foreach($courses as $course)
 
-            <li>
+                <li>
 
-                <div class="frame1">
-                    <div class="box">
+                    <div class="frame1">
+                        <div class="box">
 
-                        @if($course->photo)
-                            <img
-                                src="{{ asset('storage/'.$course->photo) }}"
-                                alt="{{ $course->title }}"
-                                width="197"
-                                height="130"
-                                style="object-fit:cover;">
-                        @endif
+                            @if($course->photo)
 
+                                <img
+                                    src="{{ asset('storage/'.$course->photo) }}"
+                                    alt="{{ $course->title }}"
+                                    width="197"
+                                    height="130"
+                                    style="object-fit:cover;">
+
+                            @endif
+
+                        </div>
                     </div>
-                </div>
 
-                <h3 style="height:60px;">
+                    <h3 style="height:34px;">
 
-                    {{ $course->title }}
+                        {{ $course->title }}
 
-                </h3>
+                    </h3>
 
-                <p>
+                    <p>
 
-                    <strong>Müddət:</strong>
+                        <strong>Müddət:</strong>
 
-                    {{ $course->duration }}
+                        {{ $course->duration }}
 
-                </p>
+                    </p>
 
-                <p>
+                    <p>
 
-                    <strong>Dərs sayı:</strong>
+                        <strong>Dərs sayı:</strong>
 
-                    {{ $course->lessons->count() }}
+                        {{ $course->lessons->count() }}
 
-                </p>
+                    </p>
 
-                <a
-                    href="{{ route('frontend.course.show', $course->id) }}"
-                    class="more">
+                    <a
+                        href="{{ route('frontend.course.show', $course->id) }}"
+                        class="more">
 
-                    Ətraflı
+                        Ətraflı
 
-                </a>
+                    </a>
 
-            </li>
+                </li>
 
-        @endforeach
+            @endforeach
 
-    </ul>
+        </ul>
 
+ <div class="flex justify-center mt-6">
+    {{ $courses->links('partials.pagination') }}
 </div>
 
     </div>
 
+</div>
+
+@endsection

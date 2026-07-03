@@ -35,7 +35,7 @@
 	</li>
 
 	<li>
-		<a href="{{ route('frontend.partners.index') }}">
+		<a href="{{ route('frontend.faqs.index') }}">
 			Tez-tez verilən suallar</a>
 	</li>
 	

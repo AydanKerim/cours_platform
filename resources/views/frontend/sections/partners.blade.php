@@ -1,8 +1,6 @@
-
-
 <div id="contents">
 
- <div id="partners" class="featured">
+    <div id="partners" class="featured">
 
         <h2>Akademik Partnyorlarımız</h2>
 
@@ -34,7 +32,7 @@
 
                             </div>
 
-                            <p>{{ $partner->name }}</p>
+                            <p style="margin-top: 10px; font-weight: 500; color: #5a6c7d;">{{ $partner->name }}</p>
 
                         </li>
 
@@ -47,8 +45,51 @@
 
         </div>
 
-        <div class="partners-dots"></div>
-
     </div>
 
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const track = document.querySelector('.partners-track');
+        const nextBtn = document.querySelector('.partners-next');
+        const prevBtn = document.querySelector('.partners-prev');
+        
+        if (!track || !nextBtn || !prevBtn) return;
+
+        let index = 0;
+
+        function updateSlider() {
+            const slideWidth = document.querySelector('.partners-slide').getBoundingClientRect().width;
+            // Lent-i sola doğru sürüşdürürük
+            track.style.transform = `translateX(-${index * slideWidth}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const totalSlides = document.querySelectorAll('.partners-slide').length;
+            // Ekranda neçə dənə slayd göstərildiyini CSS-dən alırıq (Məsələn: 4)
+            const visibleSlides = window.innerWidth > 992 ? 4 : (window.innerWidth > 768 ? 3 : (window.innerWidth > 480 ? 2 : 1));
+            
+            if (index < totalSlides - visibleSlides) {
+                index++;
+            } else {
+                index = 0; // Sona çatanda başa qayıtsın
+            }
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (index > 0) {
+                index--;
+            } else {
+                const totalSlides = document.querySelectorAll('.partners-slide').length;
+                const visibleSlides = window.innerWidth > 992 ? 4 : (window.innerWidth > 768 ? 3 : (window.innerWidth > 480 ? 2 : 1));
+                index = totalSlides - visibleSlides; // Əvvəldədirsə sona keçsin
+            }
+            updateSlider();
+        });
+
+        // Ekran ölçüsü dəyişəndə sürüşmə məsafəsini avtomatik tənzimlə
+        window.addEventListener('resize', updateSlider);
+    });
+</script>

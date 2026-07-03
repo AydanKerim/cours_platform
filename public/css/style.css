@@ -571,7 +571,7 @@ p a:hover {
 #courses h3 {
 	padding: 0;
 	height: auto;
-	margin: 0 0 12px;
+	margin: 0 5px 12px;
 	font-size: 20px;
 	line-height: 1.3;
 }
@@ -585,7 +585,7 @@ p a:hover {
 
 #courses .course-meta span {
 	display: block;
-	margin-bottom: 6px;
+	margin-bottom: 10px;
 }
 
 #courses .course-meta strong {
@@ -2322,4 +2322,208 @@ html {
 
 .card-faq {
     background: linear-gradient(135deg, #ab7fff 0%, #743cd3 100%);
+}
+
+/* ===========================
+            FAQ
+=========================== */
+
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Suallar arasındakı məsafə */
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+}
+
+/* Sual Kartı (Details) */
+.faq-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    border: 1px solid #eef2f5;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Sual Hissəsi (Summary) */
+.faq-card summary {
+    padding: 20px 25px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #2c3e50;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+    list-style: none; /* Standart ox işarəsini gizlətmək üçün */
+    position: relative;
+}
+
+/* Webkit brauzerlər üçün standart oxu gizlət */
+.faq-card summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Sualın sağ tərəfinə dinamik + işarəsi qoymaq */
+.faq-card summary::after {
+    content: '+';
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: #2ecc71; /* Yaşıl rəng tonu */
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+/* Kart açılanda yaşıl rəngdə border olması üçün */
+.faq-card[open] {
+    border-color: #2ecc71;
+}
+
+/* Kart açılanda + işarəsinin - işarəsinə dönməsi */
+.faq-card[open] summary::after {
+    content: '−';
+    color: #e74c3c; /* Bağlayanda qırmızımtıl və ya istədiyiniz rəng */
+}
+
+/* Cavab Bloku */
+.faq-answer {
+    padding: 0 25px 20px 25px;
+    color: #5a6c7d;
+    font-size: 15px;
+    line-height: 1.6;
+    border-top: 1px solid #f8f9fa;
+    background-color: #fafbfc;
+}
+
+/* "Bütün sualları göstər" Düyməsinin Konteyneri */
+.section-see-all {
+    text-align: center;
+    margin-top: 40px;
+    clear: both;
+}
+
+/* image_977a61.png şəklindəki Yaşıl Borderli Düymə Dizaynı */
+.section-see-all a.more {
+    display: inline-block !important;
+    background-color: transparent !important; /* Arxa fon şəffaf */
+    color: #2ecc71 !important; /* Mətn yaşıl rəngdə */
+    border: 2px solid #2ecc71 !important; /* Kənar xətti yaşıl */
+    padding: 12px 35px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    border-radius: 10px !important; /* Künclərin yumruluğu */
+    transition: all 0.3s ease !important;
+    height: auto !important;
+    width: auto !important;
+    line-height: normal !important;
+    box-shadow: none !important; /* Kölgəni tamamilə silirik */
+}
+
+/* Üzərinə gələndə (Hover) effekti - isteyə bağlı olaraq bir az tündləşmə */
+.section-see-all a.more:hover {
+    background-color: rgba(46, 204, 113, 0.05) !important; /* Çox yüngül yaşıl fon */
+    color: #27ae60 !important;
+    border-color: #27ae60 !important;
+}
+
+
+
+/* Partnyorlar Slider Konteyneri */
+
+
+
+.partners-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+/* Görünən pəncərə */
+.partners-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Slaydların düzüldüyü lent (Hərəkət edən hissə) */
+.partners-track {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Hər bir partnyor kartı */
+.partners-slide {
+    flex: 0 0 25%; /* Ekranda eyni anda 4 ədəd göstərmək üçün */
+    max-width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.partners-logo {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 130px;
+    border: 1px solid #eef2f5;
+}
+
+.partners-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Oxların Ümumi Dizaynı (Şəkildəki kimi dairəvi və təmiz) */
+.partners-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ffffff;
+    border: 1px solid #eef2f5;
+    color: #2ecc71;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.partners-arrow:hover {
+    background: #2ecc71;
+    color: #ffffff;
+}
+
+.partners-prev { left: 0; }
+.partners-next { right: 0; }
+
+/* Planşet və Mobil Uyğunluq (Responsive) */
+@media (max-width: 992px) {
+    .partners-slide { flex: 0 0 33.333%; max-width: 33.333%; }
+}
+@media (max-width: 768px) {
+    .partners-slide { flex: 0 0 50%; max-width: 50%; }
+}
+@media (max-width: 480px) {
+    .partners-slide { flex: 0 0 100%; max-width: 100%; }
 }
